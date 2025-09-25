@@ -1,0 +1,114 @@
+:root {
+  --color-bg: #181a1b;
+  --color-surface: #232526;
+  --color-primary: #3a3f4b;
+  --color-accent: #4f8cff;
+  --color-text: #f5f6fa;
+  --color-muted: #b0b3b8;
+  --color-border: #2c2f33;
+  --font-family-base: "Segoe UI", "Roboto", Arial, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+}
+ul {
+  list-style: none;
+}
+.container {
+  width: 100%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  line-height: 1;
+}
+.header {
+  padding: 0.5rem 1rem;
+  position: relative;
+  z-index: 10;
+}
+.arrowDown {
+  float: right;
+  color: var(--color-accent);
+  rotate: 0;
+  transition: rotate 300ms ease;
+}
+.arrowDown.activ {
+  rotate: 180deg;
+}
+.content {
+  display: none;
+  animation: dropdownRv 300ms ease;
+}
+.content.activ {
+  display: block;
+  margin-top: 0.5rem;
+  animation: dropdown 300ms ease;
+}
+.content__list {
+  overflow-y: scroll;
+  max-height: 200px;
+}
+
+/* width */
+.content__list::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.content__list::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* Handle */
+.content__list::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 1rem;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+/* Handle on hover */
+.content__list::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-muted);
+}
+.content__list li {
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  transition: background-color 300ms ease;
+}
+.content__list li:hover {
+  background-color: var(--color-primary);
+}
+.squareCheck {
+  float: right;
+  color: #4f8cff;
+  visibility: hidden;
+}
+.squareCheck.activ {
+  visibility: visible;
+}
+@keyframes dropdown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes dropdownRv {
+  0% {
+    display: block;
+    transform: translateY(0%);
+  }
+  100% {
+    display: block;
+    transform: translateY(-100%);
+  }
+}
